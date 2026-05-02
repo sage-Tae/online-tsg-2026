@@ -1,0 +1,29 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python (if we later ship code/)
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+
+# Local debug artifacts
+*_layout.txt

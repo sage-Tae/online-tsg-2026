@@ -1,0 +1,5 @@
+- Online Traveling Salesman Games tie coalition feasibility to the arrival process.
+- Temporal Nucleolus provides a unique allocation even when the Core is empty.
+- Three complement conditions plus partition-pair certificate empty Cores.
+- Bounded peak queue blocks all three complement-family emptiness mechanisms.
+- 175-instance grid certifies 66 of 67 empty Cores, with no false positives.

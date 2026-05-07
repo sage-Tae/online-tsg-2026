@@ -1,0 +1,43 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+*.toc
+*.fdb_latexmk
+*.fls
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Environment
+.env
+venv/
+.venv/
+
+# Run-time logs in code/experiments (cached CSVs are kept; per-run logs are not)
+code/experiments/logs/*.log
+
+# Virtualenv-style caches that may appear under code/
+code/.coverage
+code/htmlcov/

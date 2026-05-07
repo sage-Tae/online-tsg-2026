@@ -84,23 +84,41 @@ among coalitions realizable under revealed arrival dynamics. This repository
 contains all code, seeds, and raw results needed to reproduce the paper's
 numerical claims.
 
-## Key results (sanity checkpoints, v2.4.5)
+## Key results (sanity checkpoints, v2.8.0)
+
+> **Theorem-numbering note.** Phase 1 of the v2.8.0 polish reorganized §5.1
+> so that the general partition-pair statement is labeled as a Theorem and
+> the three special cases are labeled as Corollaries (the underlying numerical
+> claims are unchanged). The mapping is: original Theorem 9 → Corollary 9
+> (single-complement specialization); original Proposition 10 → Corollary 10
+> (balanced-complement specialization); original Proposition 13 → Corollary 13
+> (balanced-near-complement specialization); original Proposition 14 →
+> Theorem 14 (general partition-pair certificate).
 
 | Paper location | Quantity | Value |
 |---|---|---|
 | Supplementary §S6 (Solomon C101) | TNu allocation | (16.67, 20.51, 11.27, 15.18, 16.44) |
-| Table 5 | Theorem 9 single-complement fires (NN, 96 applicable) | 37/37 (no false positives) |
-| Table 5 | Proposition 10 balanced-complement fires (NN, 80 applicable) | 57/57 (no false positives) |
-| Table 5 | Proposition 13 balanced-near-complement fires (NN, 10 near-complement) | 9/10 (no false positives) |
-| Table 5 | Proposition 14 partition-pair certificate (NN, 9 intermediate cases) | 9/9 |
+| Table 5 | Corollary 9 single-complement fires (NN, 96 applicable) | 37/37 (no false positives) |
+| Table 5 | Corollary 10 balanced-complement fires (NN, 80 applicable) | 57/57 (no false positives) |
+| Table 5 | Corollary 13 balanced-near-complement fires (NN, 10 near-complement) | 9/10 (no false positives) |
+| Table 5 | Theorem 14 partition-pair certificate (NN, 9 intermediate cases) | 9/9 |
 | §6.4 | Four-threshold joint coverage of NN empties | 66/67 |
 | §6.4 | Five-mechanism decomposition of 67 NN empties | 37 + 11 + 9 + 1 + 9 |
-| Corollary 18 (§6.4) | k < n−1 Core empirical nonempty rate | 70/79 (88.6%; 9 intermediate-mechanism exceptions) |
+| Corollary 19 (§6.4) | k < n−1 Core empirical nonempty rate | 70/79 (88.6%; 9 intermediate-mechanism exceptions) |
 | §6.6 | Sharpness ratio r̄*/r̄**, r̄*/r̄*** | 3.56 (4.351/1.223), 3.97 (4.351/1.096) |
 | Supplementary §S2 | Scale invariance (r relative std across α) | 0.00e+00 |
 | Supplementary §S3 | Near-complement cases (Supp. Table) | 10 |
 | Supplementary §S3 | Intermediate cases (Supp. Table) | 9 |
-| Supplementary §S8 | Partition-pair certificates (Proposition 14) | 9/9 |
+| Supplementary §S8 | Partition-pair certificates (Theorem 14) | 9/9 |
+| Supplementary §S4 | $B_{n-3}$ closure attempt (Phase 2 Branch B) | seed 42 still negative ($-3.45\times 10^{-4}$) |
+
+The corresponding cached outputs are committed in this repo for verification:
+
+- `code/experiments/logs/policy_comparison_v2_full.csv` — 525 NN/CI/BR pairs (67 NN empties)
+- `code/results/near_complement_coverage_check.csv` — Corollary 13 LP audit (9/10 fires)
+- `code/results/near_complement_coverage_check_k3.csv` — Phase 2 $B_{n-3}$ attempt (still 9/10)
+- `code/results/intermediate_dual_analysis.json` — Theorem 14 partition-pair certificates (9/9)
+- `code/results/summary.csv`, `code/results/theorem5_validation.csv` — per-instance row data
 
 ## Repository structure
 

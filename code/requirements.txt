@@ -1,0 +1,9 @@
+# Dependencies for reproducing the paper's experiments.
+# Versions below match those used to generate the paper's numerical results
+# (see REPRODUCIBILITY.md for full environment details).
+numpy>=2.0,<3
+scipy>=1.13,<2
+pandas>=2.3,<3
+matplotlib>=3.8,<4
+elkai>=1.2
+pulp>=2.7

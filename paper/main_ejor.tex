@@ -121,14 +121,14 @@ We consider a depot $0$ and $n$ customers $N = \{1,\ldots,n\}$, located in a met
 \caption{Notation.}
 \label{tab:notation}
 \small
-\begin{tabular}{@{}ll@{}}
+\begin{tabular}{@{}lp{0.72\textwidth}@{}}
 \toprule
 Symbol & Meaning \\
 \midrule
 $N,\; n$ & Grand coalition of customers and its cardinality \\
 $d(i,j)$ & Symmetric travel cost (metric) from $i$ to $j$ \\
 $c(S)$ & Optimal TSP tour cost on $S\cup\{0\}$, \emph{time-independent} \\
-$\cstar(N)$ & $c(N)$; the grand-coalition TSP optimum \\
+$\cstar(N)$ & Grand-coalition TSP optimum (equals $c(N)$) \\
 $a_i,\; s_i$ & Arrival and service time of customer $i$ \\
 $U_t$ & Customers that have arrived by $t$ and are not yet served, $U_t=\{i:a_i\le t< s_i\}$ \\
 $\F$ & Family of \emph{feasible coalitions}: $S\in\F$ iff $|S|=1$ or $\max_{i\in S} a_i < \min_{i\in S} s_i$ (Definition~\ref{def:feasible}) \\
@@ -417,7 +417,7 @@ Inserting the detour $\text{depot}\to x_{i^{0}}\to\text{depot}$ into any tour of
 \cstar(N) \;\le\; c(N\setminus\{i^{0}\}) + c(\{i^{0}\}),
 \end{equation}
 whence $\cstar(N) - c(N\setminus\{i^{0}\}) \le c(\{i^{0}\}) = 2\,d(0,x_{i^{0}})$.
-Conversely, removing $x_{i^{0}}$ from the optimal tour on $N$ and short-cutting its two tour neighbors yields a valid Hamiltonian cycle on $N\setminus\{i^{0}\}\cup\{0\}$ of no greater length, by the triangle inequality~\citep[\S 2.1]{steele1997probability}; hence $c(N\setminus\{i^{0}\}) \le \cstar(N)$ and $\cstar(N) - c(N\setminus\{i^{0}\}) \ge 0$. Combining:
+Conversely, removing $x_{i^{0}}$ from the optimal tour on $N$ and short-cutting its two tour neighbors yields a valid Hamiltonian cycle on $N\setminus\{i^{0}\}\cup\{0\}$ of no greater length, by the triangle inequality; hence $c(N\setminus\{i^{0}\}) \le \cstar(N)$ and $\cstar(N) - c(N\setminus\{i^{0}\}) \ge 0$. Combining:
 \[
 \begin{aligned}
 \delta_{i^{0}} & \;:=\; c(\{i^{0}\}) + c(N\setminus\{i^{0}\}) - \cstar(N) \;\ge\; 0 \quad\text{[insertion bound, eq.~\eqref{eq:insert}]}, \\
@@ -497,7 +497,7 @@ We report a computational study whose purpose is to (i) verify that the theoreti
 \[
   \rho \;=\; \frac{\beta_{\mathrm{BHH}}}{\tau} \;=\; \frac{\text{per-customer characteristic edge length}}{\text{mean inter-arrival interval}},
 \]
-where $\tau$ is the mean inter-arrival interval and $\beta_{\mathrm{BHH}}\approx 0.7124$ is the Beardwood--Halton--Hammersley constant (the asymptotic per-customer Euclidean TSP edge length under the dimensionless $L=\sqrt{n}$ convention with unit density and $v=1$). This convention makes the pattern generation $\tau=\beta_{\mathrm{BHH}}/\rho$ self-consistent and renders $\rho$ scale-invariant under joint $(L,v,\tau)$ rescaling. We verify this invariance empirically to machine precision in Supplementary Materials Section~S2.
+where $\tau$ is the mean inter-arrival interval and $\beta_{\mathrm{BHH}}\approx 0.7124$ is the Beardwood--Halton--Hammersley constant (the asymptotic per-customer Euclidean TSP edge length under the dimensionless $L=\sqrt{n}$ convention with unit density and $v=1$). This convention makes the pattern generation $\tau=\beta_{\mathrm{BHH}}/\rho$ self-consistent and renders $\rho$ scale-invariant under joint $(L,v,\tau)$ rescaling. All length-scaled observables (peak queue $k$, competitive ratio $r$, threshold $r^{\ast\ast}$) are accordingly dimensionless functions of $(n,\rho)$ alone. We verify this invariance empirically to machine precision in Supplementary Materials Section~S2.
 
 \paragraph{Arrival patterns.} Seven arrival patterns span the $\rho$-spectrum:
 \begin{itemize}
@@ -505,9 +505,9 @@ where $\tau$ is the mean inter-arrival interval and $\beta_{\mathrm{BHH}}\approx
   \item \emph{$\text{B}_{\text{heavy}}$} ($\rho=4$), \emph{$\text{B}_{\text{medium}}$} ($\rho=2$), \emph{$\text{B}_{\text{light}}$} ($\rho=0.5$): sequential arrivals at uniform interval $\tau=\beta_{\mathrm{BHH}}/\rho$, where $\beta_{\mathrm{BHH}}\approx 0.7124$ is the Beardwood--Halton--Hammersley constant.
   \item \emph{C} ($\rho=2$): clustered arrivals in two angular cohorts, interleaved in space.
   \item \emph{D} ($\rho=1$): reverse-angle zig-zag order.
-  \item \emph{E} ($\rho=1$): uniformly random arrivals in $[0,n\tau]$.\footnote{Pattern E is the only arrival pattern with intra-pattern stochasticity in arrival times; A, B, C, D have deterministic ordering given the seed (only the customer coordinates vary across seeds). We report 5 replicates as the per-pattern minimum and explicitly tabulate the realized standard deviation in $r$ and $r^{\ast\ast}$ in Table~\ref{tab:pattern} (sd 0.169 and 0.139 respectively, the largest among patterns) to acknowledge the wider replicate-to-replicate spread induced by arrival-time randomness.}
+  \item \emph{E} ($\rho=1$): uniformly random arrivals in $[0,n\tau]$.\footnote{Pattern E is the only arrival pattern with intra-pattern stochasticity in arrival times; A, B, C, D have deterministic ordering given the seed (only the customer coordinates vary across seeds). We report 5 replicates as the per-pattern minimum and tabulate the realized standard deviation in $r$ and $r^{\ast\ast}$ in Table~\ref{tab:pattern} (sd 0.169 and 0.139 respectively, the largest among patterns).}
 \end{itemize}
-The seven patterns form a $(\rho,\text{structure})$ factorial rather than a $\rho$-only sweep: the load axis is traced by $A$ and the three uniform-sequential B-rates ($\rho\in\{0.5,1,2,4,\infty\}$); at the saturation-borderline $\rho=2$ a uniform-sequential pattern ($\text{B}_{\text{medium}}$) and a clustered pattern ($\text{C}$) are paired, and at $\rho=1$ a reverse-angle pattern ($\text{D}$) and a random pattern ($\text{E}$) are paired, isolating arrival geometry from arrival rate at fixed $\rho$. Patterns $\text{B}_{\text{medium}}$ and $\text{C}$ share $\rho=2$ but differ in arrival structure; Section~\ref{ssec:pattern} shows that this structural difference alone suffices to place them in qualitatively distinct regimes of Core stability, illustrating that the load parameter $\rho$ is necessary but not sufficient to characterize dynamics.
+The seven patterns form a $(\rho,\text{structure})$ factorial rather than a $\rho$-only sweep: the load axis is traced by $A$ and the three uniform-sequential B-rates ($\rho\in\{0.5,1,2,4,\infty\}$); at the saturation-borderline $\rho=2$ a uniform-sequential pattern ($\text{B}_{\text{medium}}$) and a clustered pattern ($\text{C}$) are paired, and at $\rho=1$ a reverse-angle pattern ($\text{D}$) and a random pattern ($\text{E}$) are paired, isolating arrival geometry from arrival rate at fixed $\rho$. Section~\ref{ssec:pattern} examines whether $\rho$ alone determines Core stability.
 
 \paragraph{Computational setup.} The online tour is computed by the nearest-neighbor heuristic; Section~\ref{ssec:policy} compares this baseline with cheapest-insertion and batch re-optimization policies. The static TSP $\cstar(S)$ for each $S$ is computed exactly by dynamic programming (Held--Karp) for $|S|\le 15$ and by the LKH heuristic \citep{helsgaun2000effective} otherwise. The Temporal Nucleolus is computed by the sequential LP~\eqref{eq:lp-q} implemented with PuLP and the CBC solver.
 
@@ -537,7 +537,7 @@ Table~\ref{tab:thm5} is the five-mechanism contingency of predicted versus obser
 
 \begin{table}[t]
 \centering
-\caption{Five-mechanism contingency on the 175-instance NN grid. The three complement-based analytic thresholds (Corollary~\ref{cor:single-complement}, Corollary~\ref{cor:balanced-complement}, Corollary~\ref{cor:balanced-near-complement}) jointly certify 57 of the 67 observed empty Cores, and the general partition-pair threshold (Theorem~\ref{thm:partition-pair}) certifies the remaining 9 intermediate-coalition cases of Observation~\ref{obs:intermediate} that operate at $k<n-1$ (66 of 67 jointly). One near-complement case eludes all four (Remark~\ref{rem:near-complement} residual). No false positives arise under any policy. Row labels denote the best-discriminating mechanism per instance, not the only threshold that fires. Standalone fire counts overlap: under NN dispatch, Corollary~\ref{cor:balanced-complement}'s bound $r>r^{\ast\ast\ast}$ is satisfied in 57 of the 175 instances (all 37 Corollary~\ref{cor:single-complement} fires plus 20 further cases, of which 11 lack any size-$(n-2)$ binding and are labeled ``balanced-complement'' (best label) and 9 also exhibit size-$(n-2)$ binding and are labeled ``balanced-near-complement'' (best label)). Corollary~\ref{cor:balanced-near-complement} contains the Corollary~\ref{cor:balanced-complement} weighting on the common applicability domain (setting $\lambda_S=1/(n-1)$ on $\mathcal{B}_{n-1}$, zero on $\mathcal{B}_{n-2}$ recovers Corollary~\ref{cor:balanced-complement}; see Section~\ref{ssec:empty}), specifically including the 9 ``balanced-near-complement'' (best label) cases listed above.}
+\caption{Five-mechanism contingency on the 175-instance NN grid. The three complement-based analytic thresholds (Corollary~\ref{cor:single-complement}, Corollary~\ref{cor:balanced-complement}, Corollary~\ref{cor:balanced-near-complement}) jointly certify 57 of the 67 observed empty Cores, and the general partition-pair threshold (Theorem~\ref{thm:partition-pair}) certifies the remaining 9 intermediate-coalition cases of Observation~\ref{obs:intermediate} that operate at $k<n-1$ (66 of 67 jointly). One near-complement case eludes all four (Remark~\ref{rem:near-complement} residual). No false positives arise under any policy. Row labels denote the best-discriminating mechanism per instance (best label, throughout this table), not the only threshold that fires. Standalone fire counts overlap: under NN dispatch, Corollary~\ref{cor:balanced-complement}'s bound $r>r^{\ast\ast\ast}$ is satisfied in 57 of the 175 instances (all 37 Corollary~\ref{cor:single-complement} fires plus 20 further cases, of which 11 lack any size-$(n-2)$ binding and are labeled ``balanced-complement'' and 9 also exhibit size-$(n-2)$ binding and are labeled ``balanced-near-complement''). Corollary~\ref{cor:balanced-near-complement} contains the Corollary~\ref{cor:balanced-complement} weighting on the common applicability domain (setting $\lambda_S=1/(n-1)$ on $\mathcal{B}_{n-1}$, zero on $\mathcal{B}_{n-2}$ recovers Corollary~\ref{cor:balanced-complement}; see Section~\ref{ssec:empty}), specifically including the 9 ``balanced-near-complement'' cases listed above.}
 \label{tab:thm5}
 \small
 \resizebox{\textwidth}{!}{%
@@ -546,8 +546,8 @@ Table~\ref{tab:thm5} is the five-mechanism contingency of predicted versus obser
 Classification & Core empty (obs.) & Core nonempty (obs.) & Total \\
 \midrule
 Single-complement (Corollary~\ref{cor:single-complement} fires)                                       & 37 &   0 &  37 \\
-Balanced-complement (Corollary~\ref{cor:balanced-complement}, best label)                 & 11 &   0 &  11 \\
-Balanced-near-complement (Corollary~\ref{cor:balanced-near-complement}, best label)         &  9 &   0 &   9 \\
+Balanced-complement (Corollary~\ref{cor:balanced-complement})                 & 11 &   0 &  11 \\
+Balanced-near-complement (Corollary~\ref{cor:balanced-near-complement})         &  9 &   0 &   9 \\
 Near-complement residual (Remark~\ref{rem:near-complement}; no threshold fires)               &  1 &   0 &   1 \\
 Intermediate (Observation~\ref{obs:intermediate})                                             &  9 &   0 &   9 \\
 No mechanism predicts emptiness                                                                 &  0 & 108 & 108 \\
@@ -562,7 +562,7 @@ Every instance classified by any of the five mechanisms as ``empty'' is indeed e
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.65\textwidth]{fig2_r_vs_rstar.pdf}
-\caption{Empirical test of Corollary~\ref{cor:single-complement} and Corollary~\ref{cor:balanced-complement}. The dashed line is $r=r^{\ast\ast}$; 37 instances strictly above the diagonal have an empty Core (red $\times$, single-complement mechanism). Of the 10 additional empty-Core instances plotted here as near-complement (purple diamond), 9 are certified by Corollary~\ref{cor:balanced-near-complement} (balanced-near-complement threshold on $B_{n-1}\cup B_{n-2}$) and 1 remains covered only by the first-stage Core LP (Remark~\ref{rem:near-complement} residual); the 11 balanced-complement cases covered by Corollary~\ref{cor:balanced-complement} (orange square) sit at or below the diagonal. The nine intermediate-coalition cases of Observation~\ref{obs:intermediate} have $r^{\ast\ast}$ undefined and are not plotted. See Section~\ref{ssec:cor16} for the full five-mechanism decomposition. The legend's ``Core non-empty (n=38)'' counts only the 96 instances on which $r^{\ast\ast}$ is defined; pooled with the 9 intermediate-coalition cases and the remaining nonempty instances on which $r^{\ast\ast}$ is undefined, this is consistent with the overall 108 nonempty Cores reported in Table~\ref{tab:thm5}.}
+\caption{Empirical test of Corollary~\ref{cor:single-complement} and Corollary~\ref{cor:balanced-complement}. The dashed line is $r=r^{\ast\ast}$; 37 instances strictly above the diagonal have an empty Core (red $\times$, single-complement mechanism). Of the 10 additional empty-Core instances plotted here as near-complement (purple diamond), 9 are certified by Corollary~\ref{cor:balanced-near-complement} (balanced-near-complement threshold on $B_{n-1}\cup B_{n-2}$) and 1 remains covered only by the first-stage Core LP (Remark~\ref{rem:near-complement} residual); the 11 balanced-complement cases covered by Corollary~\ref{cor:balanced-complement} (orange square) sit at or below the diagonal. Of the 175 main-grid instances, $r^{\ast\ast}$ is defined for 96 (the patterns admitting at least one feasible singleton complement); the remaining 79 instances at $k<n-1$, including the 9 intermediate-coalition cases of Observation~\ref{obs:intermediate}, are not plotted. The legend entries refer to these 96 instances only; the legend's ``Core non-empty (n=38)'', pooled with the 70 nonempty Cores at $k<n-1$, is consistent with the overall 108 nonempty Cores reported in Table~\ref{tab:thm5}. See Section~\ref{ssec:cor16} for the full five-mechanism decomposition.}
 \label{fig:r-rss}
 \end{figure}
 
@@ -614,6 +614,8 @@ $n$ & pattern & seed & $k$ & $n-1$ & $r$ & $\varepsilon^{\ast}$ & dominant size 
 \label{fig:core-k}
 \end{figure}
 
+\paragraph{Why does the intermediate-coalition mechanism vanish under CI/BR?} A plausible explanation: under nearest-neighbor dispatch, myopic detours inflate $C(N)_{\text{online}}$ relative to $\cstar(N)$, driving the realized $r$ upward. The first-stage Core LP's dual concentrates on partition pairs $(S,N\setminus S)$ where $c(S)+c(N\setminus S)\ge r\,\cstar(N)$ becomes binding; once $r$ exceeds $r^{(P)}_S$, that pair certifies emptiness via Theorem~\ref{thm:partition-pair}. Cheapest-insertion and batch re-optimization keep $r$ closer to 1, leaving no partition pair binding in the realized $\F$. A formal queueing-theoretic characterization is left as future work (Section~\ref{sec:conclusion}, Limitation~(iv)).
+
 \subsection{Pattern-level analysis}
 \label{ssec:pattern}
 
@@ -621,7 +623,7 @@ Table~\ref{tab:pattern} reports the salient statistics per arrival pattern, pool
 
 \begin{table}[t]
 \centering
-\caption{Pattern-level aggregate statistics (NN policy, $5\times 5=25$ instances per pattern; overall row pools all 175 instances). $\bar r^{\ast}$, being a function of coordinates only ($r^{\ast} = \sum_i c(\{i\})/\cstar(N)$), is identical across all patterns at $4.351$ and reported as an overall value rather than per-pattern. Em-dashes in $\bar r^{\ast\ast}$ (resp.\ $\bar r^{\ast\ast\ast}$) indicate patterns where Corollary~\ref{cor:single-complement} (resp.\ Corollary~\ref{cor:balanced-complement}) is never applicable. Bracketed quantities in the Core-rate column are Wilson 95\% confidence intervals; per-pattern intervals have full width $\approx 30$--$35$ percentage points (half-width $\pm 15$--$18$ pp) reflecting the $n=25$ replicate count, and the overall interval narrows to $\approx 14$ pp full width ($\pm 7$ pp).}
+\caption{Pattern-level aggregate statistics (NN policy, $5\times 5=25$ instances per pattern; overall row pools all 175 instances). $\bar r^{\ast}$, being a function of coordinates only ($r^{\ast} = \sum_i c(\{i\})/\cstar(N)$), is shared across patterns by construction (coordinates iid uniform within each cell); the pooled mean is $4.351$ and is reported as an overall value rather than per-pattern. Em-dashes in $\bar r^{\ast\ast}$ (resp.\ $\bar r^{\ast\ast\ast}$) indicate patterns where Corollary~\ref{cor:single-complement} (resp.\ Corollary~\ref{cor:balanced-complement}) is never applicable. Bracketed quantities in the Core-rate column are Wilson 95\% confidence intervals; per-pattern intervals have full width $\approx 30$--$35$ percentage points (half-width $\pm 15$--$18$ pp) reflecting the $n=25$ replicate count, and the overall interval narrows to $\approx 14$ pp full width ($\pm 7$ pp).}
 \label{tab:pattern}
 \small
 \resizebox{\textwidth}{!}{%
@@ -642,7 +644,7 @@ Overall                     & ---      & 0.62 [0.54, 0.69] & 1.312 (0.224) & 1.2
 \end{tabular}}
 \end{table}
 
-Three regimes emerge. Patterns with $\rho\ge 2$ and saturated arrival timing (A, $\text{B}_{\text{heavy}}$, C) reach near-full feasibility ($\overline{|\F|/(2^n-1)}\ge 0.985$ for $\text{B}_{\text{heavy}}$ and C; $|\F|=2^n-1$ for A) and place Corollary~\ref{cor:single-complement} in the applicable regime for nearly every instance, firing in $9/25$, $15/25$, and $10/25$ respectively. Sparse-feasibility regimes ($\text{B}_{\text{light}}$, D, E) keep $\overline{|\F|/(2^n-1)}\le 0.27$ and render Corollary~\ref{cor:single-complement} either inapplicable or non-firing; in these regimes the mean competitive ratio rises ($\bar r\in[1.33,1.69]$) because the online tour detours to reach customers as they arrive while $\cstar(N)$ reflects the offline optimum, but Corollary~\ref{cor:cor52} blocks every complement-based mechanism and the 2 empty Cores observed in pattern E arise solely via the intermediate-coalition mechanism of Observation~\ref{obs:intermediate}. Per-pattern statistics are in Table~\ref{tab:pattern}.
+Three regimes emerge. Patterns with $\rho\ge 2$ and saturated arrival timing (A, $\text{B}_{\text{heavy}}$, C) reach near-full feasibility ($\overline{|\F|/(2^n-1)}\ge 0.985$ for $\text{B}_{\text{heavy}}$ and C; $|\F|=2^n-1$ for A) and place Corollary~\ref{cor:single-complement} in the applicable regime for nearly every instance, firing in $9/25$, $15/25$, and $10/25$ respectively. Sparse-feasibility regimes ($\text{B}_{\text{light}}$, D, E) keep $\overline{|\F|/(2^n-1)}\le 0.27$ and render Corollary~\ref{cor:single-complement} either inapplicable or non-firing; in these regimes the mean competitive ratio rises ($\bar r\in[1.33,1.69]$) because the online tour detours to reach customers as they arrive while $\cstar(N)$ reflects the offline optimum, but Corollary~\ref{cor:cor52} blocks every complement-based mechanism and the 2 empty Cores observed in pattern E arise solely via the intermediate-coalition mechanism of Observation~\ref{obs:intermediate}.
 
 \paragraph{Load parameter $\rho$ alone does not determine Core stability.} Patterns $\text{B}_{\text{medium}}$ and $C$ share $\rho=2$ but differ in arrival geometry; this structural difference alone yields qualitatively distinct Core stability regimes ($\text{B}_{\text{medium}}$ Core rate $0.56$ vs.\ $C$ $0.28$).
 
@@ -732,8 +734,7 @@ We introduced the Online Traveling Salesman Game and defined the Temporal Nucleo
   policy-independent, but $\F$ itself, applicability, and
   $\F$-restricted minima depend on the dispatch policy through
   realized service times. Empirical robustness across NN/CI/BR is
-  documented in Section~\ref{ssec:policy}; learning-based or
-  forecasting-aware policies remain open.
+  shown; learning-based or forecasting-aware policies remain open.
 \item \emph{Instance scale.} Section~\ref{ssec:scaleup} extends to
   $n\in\{20,30,50\}$ via LKH (calibration error $0.000\%$ vs.\
   Held--Karp at $n=15$, well below the minimum $r-r^{\ast\ast}$ margin
@@ -751,9 +752,12 @@ We introduced the Online Traveling Salesman Game and defined the Temporal Nucleo
 \item \emph{Intermediate-coalition mechanism.}
   Theorem~\ref{thm:partition-pair} certifies the 9 cases of
   Observation~\ref{obs:intermediate} via dual-support extraction; a
-  policy-aware predictive condition derived from queueing primitives,
-  rather than after-the-fact LP duals, is open. The mechanism is also
-  policy-sensitive: observed only under NN, absent under CI/BR.
+  policy-aware predictive condition derived from queueing primitives
+  (peak queue $k$, occupancy autocorrelation, dispatch greediness)
+  that predicts which arrival--service realizations admit a binding
+  partition pair, rather than after-the-fact LP dual extraction,
+  remains open. The mechanism is also policy-sensitive: observed only
+  under NN, absent under CI/BR.
 \item \emph{Policy-dependence of $\F$.} The per-coalition cost values
   $c(S)$ are policy-independent (geometric); the family $\F$ depends
   on realized service times and hence on the dispatch policy, and
@@ -778,8 +782,8 @@ All code, data, and reproducibility scripts are publicly available at \url{https
 %% Single-spacing applied to bibliography only; main body remains
 %% one-and-a-half-spaced. Inter-entry skip tightened from default.
 \renewcommand{\bibfont}{\footnotesize}
-\setlength{\bibsep}{0pt plus 0.2ex minus 0.2ex}
-\begin{spacing}{1.0}
+\setlength{\bibsep}{0pt plus 0.0ex minus 0.0ex}
+\begin{spacing}{0.85}
 \bibliographystyle{apalike-ejor}
 \bibliography{references_ejor}
 \end{spacing}

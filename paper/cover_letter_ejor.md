@@ -47,24 +47,26 @@ this family we define the *Temporal Nucleolus* as the lexicographic
 minimizer of excess and compute it by a sequential linear program
 over $\mathcal{F}$.
 
-The paper's theoretical contribution is three complement-family
-sufficient conditions for Temporal Core emptiness — a single-
-complement threshold $r^{**}$ (Theorem 9), a balanced-complement
-threshold $r^{***}$ (Proposition 10), and a balanced-near-complement
-threshold $r^{(\diamond)}$ on the mixed collection $B_{n-1}\cup B_{n-2}$
-(Proposition 13) — together with one unifying partition-pair
-certificate (Proposition 14) that contains Theorem 9 as the singleton-
-complement case and additionally fires on non-singleton partition
-pairs at $k<n-1$. A structural obstruction (Corollary 19): a bounded
-peak queue $k < n-1$ simultaneously blocks all three complement-family
-mechanisms. Together the four analytic thresholds certify 66 of the
-67 observed empty Cores in our 175-instance grid (the remaining one
-near-complement case eludes the closed-form thresholds by $\approx
-2\times 10^{-3}$), with no false positives across 525 policy-instance
-pairs (three dispatch policies). An asymptotic refinement (Theorem 16)
-ties $r^{**}\to 1$ to the classical Beardwood–Halton–Hammersley
-$\sqrt{n}$ scaling of the Euclidean TSP, and a scale-up to $n=50$
-confirms the asymptotic decay.
+The paper's theoretical contribution is a general partition-pair
+certificate (Theorem 14, formerly Proposition 14) for Temporal Core
+emptiness, with three a priori computable specializations: the
+single-complement threshold $r^{**}$ (Corollary 9, formerly Theorem 9),
+the balanced-complement threshold $r^{***}$ (Corollary 10, formerly
+Proposition 10), and the balanced-near-complement threshold
+$r^{(\diamond)}$ on the mixed collection $B_{n-1}\cup B_{n-2}$
+(Corollary 13, formerly Proposition 13). The general theorem
+additionally fires on non-singleton partition pairs at $k<n-1$, where
+the three specializations are vacuous. A structural obstruction
+(Corollary 19): a bounded peak queue $k < n-1$ simultaneously blocks
+the three computable specializations but not the partition-pair
+mechanism via non-singleton splits. Together the four analytic
+thresholds certify 66 of the 67 observed empty Cores in our
+175-instance grid (the remaining one near-complement case eludes the
+closed-form thresholds by $\approx 2\times 10^{-3}$), with no false
+positives across 525 policy-instance pairs (three dispatch policies).
+An asymptotic refinement (Theorem 16) ties $r^{**}\to 1$ to the
+classical Beardwood–Halton–Hammersley $\sqrt{n}$ scaling of the
+Euclidean TSP, and a scale-up to $n=50$ confirms the asymptotic decay.
 
 ## Scope and methodological choice
 
